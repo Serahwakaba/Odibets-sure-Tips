@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
@@ -16,7 +17,7 @@
         android:paddingLeft="2dp"
         android:paddingTop="20dp"
         android:text="20:00"
-        android:textColor="@color/white" />
+        android:textColor="@color/grey" />
 
     <TextView
         android:id="@+id/border"
@@ -37,7 +38,7 @@
             android:layout_toRightOf="@+id/time"
             android:paddingLeft="20dp"
             android:text="Arsenal"
-            android:textColor="@color/white"
+            android:textColor="@color/grey"
             android:textSize="15sp" />
 
         <TextView
@@ -45,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
-            android:textColor="@color/white"
+            android:textColor="@color/grey"
             tools:text="Everton" />
 
     </LinearLayout>
@@ -63,7 +64,7 @@
             android:layout_toRightOf="@+id/matchOne"
             android:paddingLeft="10dp"
             android:text="0"
-            android:textColor="@color/white"
+            android:textColor="@color/grey"
             android:textSize="18sp" />
 
         <TextView
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:text="0"
-            android:textColor="@color/white"
+            android:textColor="@color/grey"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -95,7 +96,7 @@
             android:layout_weight="1"
             android:text="2"
             android:paddingLeft="20dp"
-            android:textColor="@color/white"
+            android:textColor="@color/grey"
             android:textSize="18sp" />
         <TextView
             android:id="@+id/border2"
