@@ -50,10 +50,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Odds"
+            android:paddingRight="70dp"
             android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

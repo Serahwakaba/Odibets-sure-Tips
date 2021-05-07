@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -29,14 +30,31 @@
         app:popupTheme="@style/Theme.OdiBetsSureTips.PopupOverlay"
         app:titleMarginStart="40dp" />
 
+
+
     <include
         android:id="@+id/include"
-        layout="@layout/content_main" />
+        layout="@layout/content_main"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
 
     <include
         layout="@layout/fragment_fragment3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        />
 
+    <include
+        layout="@layout/country"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="144dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressDialog"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:backgroundTint="@color/greenColor"
+        android:paddingLeft="150dp"
+        android:paddingTop="200dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

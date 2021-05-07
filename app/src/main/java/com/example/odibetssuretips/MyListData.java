@@ -1,19 +1,45 @@
 package com.example.odibetssuretips;
 
 
+import android.widget.TextView;
+
 public class MyListData{
     private int time;
-    private String matches;
-    private int scores;
-    private int tips;
+    //private String matches;
+   // private int scores;
+    private int prediction;
     private double odds;
+    private  String home_team;
+    private  String away_team;
 
-    public MyListData(int time, String matches, int scores, int tips, double odds) {
+    public MyListData(int time,int prediction, double odds, String home_team, String away_team) {
         this.time = time;
-        this.matches = matches;
-        this.scores = scores;
-        this.tips = tips;
+        //this.matches = matches;
+        //scores = scores;
+        this.prediction = prediction;
         this.odds = odds;
+        this.home_team = home_team;
+        this.away_team = away_team;
+    }
+
+    public MyListData(TextView time, TextView matchOne, TextView matchTwo, TextView tips, TextView odds) {
+    }
+
+
+    public String getHome_team() {
+        return home_team;
+    }
+
+    public void setHome_team(String home_team) {
+        this.home_team = home_team;
+    }
+
+    public String getAway_team() {
+        return away_team;
+    }
+
+    public void setAway_team(String away_team) {
+        this.away_team = away_team;
     }
 
     public int getTime() {
@@ -24,6 +50,7 @@ public class MyListData{
         this.time = time;
     }
 
+    /*
     public String getMatches() {
         return matches;
     }
@@ -39,13 +66,15 @@ public class MyListData{
     public void setScores(int scores) {
         this.scores = scores;
     }
+    
+     */
 
-    public int getTips() {
-        return tips;
+    public int getPrediction() {
+        return prediction;
     }
 
-    public void setTips(int tips) {
-        this.tips = tips;
+    public void setPrediction(int prediction) {
+        this.prediction = prediction;
     }
 
     public double getOdds() {
