@@ -1,10 +1,9 @@
 package com.example.odibetssuretips;
-import android.app.Dialog;
+
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,117 +14,113 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView time;
+    private TextView border;
+    private  TextView marchOne;
+    private TextView marchTwo;
+    private TextView scoreOne;
+    private TextView scoreTwo;
+    private TextView border1;
+    private TextView tips;
+    private TextView border2;
+    private TextView odds;
 
     ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ProgressDialog dialog = new ProgressDialog(this);//initialization;        progressDialog.setContentView(R.layout.progress_layout);
+        ProgressDialog dialog = new ProgressDialog(this);//initialization; progressDialog.setContentView(R.layout.progress_layout);
 
        JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("app_package","com.sportytips");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
             jsonObject.put("gamedate","2020-05-06");
+            postLogin(jsonObject);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-      postLogin(jsonObject);
+
     }
 
     private void postLogin(JSONObject payload) {
 
         progressDialog.show();
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,"https://www.suretips.co.ke/bettips_api//tips/all/v2", payload,
-                new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, "https://www.suretips.co.ke/bettips_api//tips/all/v2", payload, new Response.Listener<JSONObject>() {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
-                        Log.d("Tips",response.toString());
+            @Override
+            public void onResponse(JSONObject response) {
+                progressDialog.dismiss();
+                Log.d("Tips", response.toString());
+                try {
 
-                        //put your code here
+                    //put your code here
+                    JSONObject data = response.getJSONObject("data");
+                    JSONArray matches = data.getJSONArray("matches");
+
+                    for (int i = 0; i < matches.length(); i++) {
+                        JSONObject johaa = response.getJSONObject(String.valueOf(i));
+                        tips.setText(johaa.getInt("prediction"));
 
                     }
 
+                }
 
+//                         else{
+//                            lblMessageBox.setVisibility(View.VISIBLE);
+//                            lblMessageBox.setText(message);
+//                            //Toast.makeText(getContext(),message,Toast.LENGTH_LONG).show();
+//                        }
 
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-
-
-
-
-
-
-
-
-
-
-
-
-//    @Override
-        public void onErrorResponse(VolleyError volleyError) {
+            }
+        }, volleyError -> {
             progressDialog.dismiss();
             NetworkResponse response = volleyError.networkResponse;
 
-        MotionTelltales lblMessageBox = null;
-        if(response != null && response.data != null){
+            MotionTelltales lblMessageBox = null;
+            if (response != null && response.data != null) {
                 String json = new String(response.data);
-                Log.d("Error",json);
+                Log.d("Error", json);
 
-                try{
+                try {
                     JSONObject obj = new JSONObject(json);
                     json = obj.getString("statusDescription");
-                    if(!obj.isNull("data")){
+                    if (!obj.isNull("data")) {
                         JSONObject data = obj.getJSONObject("data");
-                        lblMessageBox.setVisibility(View.VISIBLE);
-                        lblMessageBox.setText(data.getString("message"));
+                        Toast.makeText(getApplicationContext(), data.getString("message"), Toast.LENGTH_SHORT).show();
+                    } else {
 
-                        // Toast.makeText(getContext(),data.getString("message"),Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        lblMessageBox.setText(json);
-                        lblMessageBox.setVisibility(View.VISIBLE);
-                        Toast.makeText(getContext(),json, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), json, Toast.LENGTH_SHORT).show();
                     }
 
-                } catch(JSONException e){
-                    lblMessageBox.setVisibility(View.VISIBLE);
-                    lblMessageBox.setText(getContext().getResources().getString(R.string.serverError));
+                } catch (JSONException e) {
 
-                    //Toast.makeText(getContext(),getContext().getResources().getString(R.string.serverError),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Server error", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
+            } else {
+                Toast.makeText(getApplicationContext(), "Server error", Toast.LENGTH_LONG).show();
+
             }
-            else{
-                lblMessageBox.setVisibility(View.VISIBLE);
-                lblMessageBox.setText(getContext().getResources().getString(R.string.serverError));
-            }
 
-
-        }
-    })
-    {
-    };
-//    RetryPolicy policy = new DefaultRetryPolicy(Config.SOCKET_TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-//        jsonObjReq.setRetryPolicy(policy);
-    // Adding request to request queue
-        RequestSingletone.getInstance(getContext()).addToRequestQueue(jsonObjReq, "SET PIN REQUEST"); }
-
-    private Context getContext() {
-        return null;
+        });
+            RetryPolicy policy = new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                jsonObjReq.setRetryPolicy(policy);
+            // Adding request to request queue
+                RequestSingletone.getInstance(getApplicationContext()).addToRequestQueue(jsonObjReq, "matches");
     }
 }
 
