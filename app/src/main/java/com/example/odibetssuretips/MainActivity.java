@@ -33,18 +33,27 @@ public class MainActivity extends AppCompatActivity {
     private TextView border2;
     private TextView odds;
 
-    ProgressDialog progressDialog;
+//    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ProgressDialog dialog = new ProgressDialog(this);//initialization; progressDialog.setContentView(R.layout.progress_layout);
+//        ProgressDialog dialog = new ProgressDialog(this);//initialization; progressDialog.setContentView(R.layout.progress_layout);
 
        JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("app_package","com.sportytips");
             jsonObject.put("gamedate","2020-05-06");
+            jsonObject.put("match_start_time", "2021-04-28 20:00:00" );
+            jsonObject.put("home_team",  "manchester");
+            jsonObject.put("away_team","Manchester City");
+            jsonObject.put("home_strength", "1.1813520541");
+            jsonObject.put( "away_strength", "1.7368890657");
+            jsonObject.put("prediction", "2");
+            jsonObject.put("odds", "0.499");
             postLogin(jsonObject);
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -54,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void postLogin(JSONObject payload) {
 
-        progressDialog.show();
+//        progressDialog.show();
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, "https://www.suretips.co.ke/bettips_api//tips/all/v2", payload, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
                 Log.d("Tips", response.toString());
                 try {
 
@@ -68,18 +77,20 @@ public class MainActivity extends AppCompatActivity {
                     JSONArray matches = data.getJSONArray("matches");
 
                     for (int i = 0; i < matches.length(); i++) {
-                        JSONObject johaa = response.getJSONObject(String.valueOf(i));
-                        tips.setText(johaa.getInt("prediction"));
+                        JSONObject name = response.getJSONObject(String.valueOf(i));
+                        time.setText(name.getInt("time"));
+                        tips.setText(name.getInt("prediction"));
+                        marchOne.setText(name.getInt("home_team"));
+                        marchTwo.setText(name.getInt("away_team"));
+                        odds.setText(name.getInt("odds"));
+
+
+
+
 
                     }
 
                 }
-
-//                         else{
-//                            lblMessageBox.setVisibility(View.VISIBLE);
-//                            lblMessageBox.setText(message);
-//                            //Toast.makeText(getContext(),message,Toast.LENGTH_LONG).show();
-//                        }
 
                 catch (JSONException e) {
                     e.printStackTrace();
@@ -87,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }, volleyError -> {
-            progressDialog.dismiss();
+//            progressDialog.dismiss();
             NetworkResponse response = volleyError.networkResponse;
 
             MotionTelltales lblMessageBox = null;
