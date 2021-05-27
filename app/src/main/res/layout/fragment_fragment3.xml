@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="422dp"
-        android:layout_height="35dp"
+        android:layout_height="20dp"
         android:background="@color/greenColor"
         android:orientation="horizontal">
 
@@ -40,7 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tips"
+            android:text="@string/tips"
+            android:paddingBottom="2dp"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -50,13 +51,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Odds"
-            android:paddingRight="70dp"
             android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/main_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="50dp" />
