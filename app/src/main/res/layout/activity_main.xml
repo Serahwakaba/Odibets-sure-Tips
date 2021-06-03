@@ -16,8 +16,6 @@
         android:rotationX="-85"
         android:background="@color/green"
         android:theme="@style/Theme.OdiBetsSureTips.AppBarOverlay">
-
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.appcompat.widget.Toolbar
@@ -62,6 +60,7 @@
         android:layout_height="350dp"
         android:backgroundTint="@color/greenColor"
         android:paddingLeft="150dp"
+        android:visibility="gone"
         android:paddingTop="200dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

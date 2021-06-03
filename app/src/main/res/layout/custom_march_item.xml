@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="wrap_content"
-    android:paddingTop="30dp"
-    android:orientation="horizontal">
+    android:background="@color/white"
+    android:paddingTop="5dp"
+    android:orientation="horizontal"
+    android:visibility="visible">
 
 
     <TextView
@@ -15,12 +16,12 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:height="60dp"
+        android:paddingStart="2dp"
         android:paddingLeft="2dp"
         android:paddingTop="20dp"
         android:text="@string/_20_00"
-        android:textColor="@color/grey"
-        android:paddingStart="2dp"
-        tools:ignore="RtlSymmetry" />
+        android:textColor="@color/black"
+         />
 
     <TextView
         android:id="@+id/border"
@@ -31,8 +32,8 @@
     <LinearLayout
         android:layout_width="180dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/matchOne"
@@ -41,7 +42,7 @@
             android:layout_toRightOf="@+id/time"
             android:paddingLeft="20dp"
             android:text="Arsenal"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
@@ -49,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             tools:text="Everton" />
 
     </LinearLayout>
@@ -57,8 +58,8 @@
     <LinearLayout
         android:layout_width="30dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/scoreOne"
@@ -67,7 +68,7 @@
             android:layout_toRightOf="@+id/matchOne"
             android:paddingLeft="10dp"
             android:text="0"
-            android:textColor="@color/grey"
+            android:textColor="@color/grey2"
             android:textSize="18sp" />
 
         <TextView
@@ -76,31 +77,33 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:text="0"
-            android:textColor="@color/grey"
+            android:textColor="@color/grey2"
             android:textSize="18sp" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/border1"
         android:layout_width="1dp"
+        android:paddingLeft="2dp"
         android:layout_height="match_parent"
         android:background="@color/grey" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tips"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingLeft="25dp"
             android:text="2"
-            android:paddingLeft="20dp"
             android:textColor="@color/grey"
             android:textSize="18sp" />
+
         <TextView
             android:id="@+id/border2"
             android:layout_width="1dp"
@@ -115,7 +118,8 @@
             android:layout_weight="1"
             android:paddingLeft="20dp"
             android:text="0.163"
-            android:textColor="@color/grey" />
+            android:textColor="@color/grey2" />
     </LinearLayout>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

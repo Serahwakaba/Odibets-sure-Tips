@@ -60,15 +60,15 @@ public class RequestSingletone {
         getRequestQueue().add(req);
     }
 
-    public ImageLoader getImageLoader() {
-        return imageLoader;
-    }
-
-    public void cancelPendingRequests(Object tag) {
-        if (requestQueue != null) {
-            requestQueue.cancelAll(tag);
-        }
-    }
+//    public ImageLoader getImageLoader() {
+//        return imageLoader;
+//    }
+//
+//    public void cancelPendingRequests(Object tag) {
+//        if (requestQueue != null) {
+//            requestQueue.cancelAll(tag);
+//        }
+//    }
 
 
 }

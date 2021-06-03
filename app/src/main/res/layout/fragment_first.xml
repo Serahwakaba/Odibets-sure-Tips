@@ -59,7 +59,7 @@
                     android:background="@color/green"
                     android:paddingLeft="20dp"
                     android:text="08 may"
-                    android:textColor="@color/grey2" />
+                    android:textColor="@color/white2" />
             </LinearLayout>
 
             <LinearLayout
@@ -89,7 +89,7 @@
                     android:background="@color/green"
                     android:paddingLeft="20dp"
                     android:text="09 may"
-                    android:textColor="@color/grey2" />
+                    android:textColor="@color/white2"/>
             </LinearLayout>
 
 
@@ -150,7 +150,7 @@
                     android:background="@color/green"
                     android:paddingLeft="20dp"
                     android:text="11 may"
-                    android:textColor="@color/grey2" />
+                    android:textColor="@color/white2" />
             </LinearLayout>
 
 
@@ -181,7 +181,7 @@
                     android:background="@color/green"
                     android:paddingLeft="20dp"
                     android:text="12 may"
-                    android:textColor="@color/grey2" />
+                    android:textColor="@color/white2" />
             </LinearLayout>
 
 
