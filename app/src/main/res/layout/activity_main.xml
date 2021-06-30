@@ -35,15 +35,12 @@
         app:titleTextColor="@color/white" />
 
 
+    <include
+        layout="@layout/activity_days"
+        />
 
     <include
-        android:id="@+id/include"
-        layout="@layout/content_main"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent" />
-
-    <include
-        layout="@layout/fragment_fragment3"
+        layout="@layout/activity_soccer"
         />
 
     <include
@@ -52,6 +49,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="140dp"
         android:paddingBottom="30dp" />
+
 
     <ProgressBar
         android:id="@+id/progressDialog"

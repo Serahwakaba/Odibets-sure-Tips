@@ -1,8 +1,11 @@
 package com.example.odibetssuretips;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -59,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        Button mMondayButton = (Button) findViewById(R.id.textView7);
+//        mMondayButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, Monday.class);
+//                startActivity(intent);
+////                Toast.makeText(MainActivity.this, "Hello World!", Toast.LENGTH_LONG).show();
+//            }
+//        });
 //        ProgressDialog dialog = new ProgressDialog(this);//initialization; progressDialog.setContentView(R.layout.progress_layout);
 //        ToggleButton = (2021-)
 
@@ -80,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             jsonObject.put("app_package","com.sportytips");
             jsonObject.put("game", "currentDate");
-//            jsonObject.put("match_start_time", "2021-04-28 20:00:00" );
+//           jsonObject.put("match_start_time", " 20:00:00" );
 //            jsonObject.put("home_team",  "manchester");
 //            jsonObject.put("away_team","Manchester City");
 //            jsonObject.put("home_strength", "1.1813520541");
@@ -188,5 +200,5 @@ public class MainActivity extends AppCompatActivity {
                 jsonObjReq.setRetryPolicy(policy);
             // Adding request to request queue
                 RequestSingletone.getInstance(getApplicationContext()).addToRequestQueue(jsonObjReq, "matches");
-    }
+         }
 }
